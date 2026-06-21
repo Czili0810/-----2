@@ -1,0 +1,19 @@
+{
+  "name": "solar-system-simulator",
+  "version": "2.0.0",
+  "description": "Interactive NASA Style Solar System Explorer — 3D planetarium with Bloom, DOF, auto-tour, and realistic textures",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "keywords": ["solar-system", "threejs", "3d", "nasa", "planetarium", "astronomy"],
+  "license": "MIT"
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="sg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffcc44"/>
+      <stop offset="60%" stop-color="#ff8800"/>
+      <stop offset="100%" stop-color="#cc3300"/>
+    </radialGradient>
+  </defs>
+  <!-- planet body -->
+  <circle cx="32" cy="32" r="14" fill="url(#sg)"/>
+  <!-- ring back -->
+  <ellipse cx="32" cy="32" rx="26" ry="6" fill="none" stroke="#d4c896" stroke-width="3" opacity="0.5"
+    stroke-dasharray="37 4"/>
+  <!-- ring front overlay -->
+  <path d="M6 32 A26 6 0 0 0 58 32" fill="none" stroke="#e8d8a0" stroke-width="3" opacity="0.8"/>
+  <!-- ring front (lower half)-->
+  <path d="M6 32 A26 6 0 0 1 58 32" fill="none" stroke="#c8b878" stroke-width="2.5" opacity="0.6"/>
+  <!-- highlight -->
+  <circle cx="26" cy="24" r="4" fill="rgba(255,255,255,0.15)"/>
+</svg>

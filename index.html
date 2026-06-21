@@ -2543,20 +2543,12 @@ function animate() {
       const minDist = planetR * 1.3;
       const maxDist = planetR * 50;
       const clampedDist = THREE.MathUtils.clamp(tourBaseDistance * tourZoomFactor, minDist, maxDist);
-      // 自适应平滑速度：近距离 (<3r) 减速防抖，远距离正常
-      const distRatio = clampedDist / planetR;
-      const posLerp = distRatio < 3
-        ? THREE.MathUtils.lerp(0.03, 0.07, (distRatio - 1.3) / 1.7)
-        : THREE.MathUtils.lerp(0.07, 0.15, Math.min((distRatio - 3) / 15, 1));
-      const targetLerp = distRatio < 3
-        ? THREE.MathUtils.lerp(0.05, 0.12, (distRatio - 1.3) / 1.7)
-        : THREE.MathUtils.lerp(0.12, 0.22, Math.min((distRatio - 3) / 15, 1));
-      // 相机 = 行星位置 + 方向 × 缩放距离
+      // 每帧：相机 = 行星位置 + 方向 × 缩放距离
       const targetCamPos = worldPos.clone().add(
         tourBaseDirection.clone().multiplyScalar(clampedDist)
       );
-      camera.position.lerp(targetCamPos, posLerp);
-      controls.target.lerp(worldPos, targetLerp);
+      camera.position.lerp(targetCamPos, 0.15);
+      controls.target.lerp(worldPos, 0.2);
     }
     if (tourWaitTimer >= TOUR_WAIT) {
       gotoNextTourStop();

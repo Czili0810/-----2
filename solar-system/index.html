@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Solar System Simulator — Interactive NASA Style Solar System Explorer</title>
+  <meta name="description" content="Interactive 3D solar system planetarium with realistic procedural textures, auto-tour, and NASA-style mission control UI. Explore 8 planets, the Sun, and the Moon in real-time WebGL.">
+  <meta name="keywords" content="solar system, 3D, planetarium, NASA, Three.js, WebGL, space, planets, astronomy, interactive, simulator">
+  <meta name="author" content="Solar System Simulator">
+  <meta name="theme-color" content="#050d16">
+  <meta property="og:title" content="Solar System Simulator — NASA Style Explorer">
+  <meta property="og:description" content="Interactive 3D solar system with realistic textures, auto-tour, and mission control UI.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Solar System Simulator">
+  <meta name="twitter:description" content="Interactive NASA Style 3D Solar System Explorer">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Initializing Systems...</div>
+</div>
+
+<!-- Title Bar -->
+<div id="title-bar">
+  <h1>Solar System Simulator</h1>
+  <div class="subtitle">Interactive NASA Style Explorer</div>
+</div>
+
+<!-- Info Panel -->
+<div id="info-panel">
+  <button class="close-btn" title="关闭">✕</button>
+  <canvas class="planet-icon" width="64" height="64" id="planet-icon"></canvas>
+  <div class="planet-name" id="p-name">--</div>
+  <div class="planet-name-en" id="p-name-en">--</div>
+  <div class="info-grid">
+    <div class="info-item"><div class="info-label">类型</div><div class="info-value" id="p-type">--</div></div>
+    <div class="info-item"><div class="info-label">半径</div><div class="info-value" id="p-radius">--</div></div>
+    <div class="info-item"><div class="info-label">质量</div><div class="info-value" id="p-mass">--</div></div>
+    <div class="info-item"><div class="info-label">密度</div><div class="info-value" id="p-density">--</div></div>
+    <div class="info-item"><div class="info-label">表面重力</div><div class="info-value" id="p-gravity">--</div></div>
+    <div class="info-item"><div class="info-label">表面温度</div><div class="info-value" id="p-temp">--</div></div>
+    <div class="info-item"><div class="info-label">公转周期</div><div class="info-value" id="p-orbit">--</div></div>
+    <div class="info-item"><div class="info-label">自转周期</div><div class="info-value" id="p-rot">--</div></div>
+    <div class="info-item"><div class="info-label">卫星数量</div><div class="info-value" id="p-moons">--</div></div>
+    <div class="info-item"><div class="info-label">距太阳距离</div><div class="info-value" id="p-dist">--</div></div>
+  </div>
+  <div class="fact" id="p-fact">点击行星查看详情</div>
+</div>
+
+<!-- Hint Bar -->
+<div id="hint-bar">
+  <span class="hint"><span class="key">🖱 拖拽</span> 旋转</span>
+  <span class="hint"><span class="key">🖱 滚轮</span> 缩放</span>
+  <span class="hint"><span class="key">🖱 双击</span> 飞行</span>
+  <span class="hint"><span class="key">🖱 点击</span> 查看</span>
+</div>
+
+<!-- Control Bar -->
+<div id="ctrl-bar">
+  <button class="ctrl-btn" id="btn-play" title="播放 / 暂停">▶</button>
+  <span class="ctrl-sep"></span>
+  <button class="ctrl-btn" id="btn-slower" title="减速">⏪</button>
+  <span class="speed-display" id="speed-label">1.0×</span>
+  <button class="ctrl-btn" id="btn-faster" title="加速">⏩</button>
+  <span class="ctrl-sep"></span>
+  <button class="ctrl-btn" id="btn-orbits" title="显示/隐藏轨道线">◎</button>
+  <button class="ctrl-btn" id="btn-labels" title="显示/隐藏标签">🏷</button>
+  <span class="ctrl-sep"></span>
+  <button class="ctrl-btn mode-btn active" data-mode="orbit" title="轨道观察模式">◎</button>
+  <button class="ctrl-btn mode-btn" data-mode="focus" title="行星聚焦模式">⊙</button>
+  <button class="ctrl-btn mode-btn" data-mode="follow" title="行星跟随模式">◉</button>
+  <button class="ctrl-btn mode-btn" data-mode="free" title="自由飞行 (WASD)">✈</button>
+  <span class="ctrl-sep"></span>
+  <button class="ctrl-btn" id="btn-tour" title="自动巡航">🚀</button>
+  <button class="ctrl-btn" id="btn-reset" title="重置视角">↺</button>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

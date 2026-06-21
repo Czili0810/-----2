@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -Command \"$msg = @{sessionId=$env:CLAUDE_SESSION_ID; projectDir=$env:CLAUDE_PROJECT_DIR; timestamp=(Get-Date -Format 'o')} | ConvertTo-Json -Compress; $logFile = \\\"$env:USERPROFILE\\.claude\\projects\\c--Users-lenovo-Desktop------\\session-log.jsonl\\\"; Add-Content -Path $logFile -Value $msg\"",
+            "shell": "powershell"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npx vite *)",
+      "Bash(cp -r *)",
+      "Read(//c/Users/lenovo/Desktop/**)",
+      "Bash(powershell *)",
+      "Write(C:/Users/lenovo/.claude/projects/c--Users-lenovo-Desktop------/**)",
+      "Edit(C:/Users/lenovo/.claude/projects/c--Users-lenovo-Desktop------/**)"
+    ]
+  }
+}
